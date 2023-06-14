@@ -3,6 +3,8 @@ package com.example.firstmultiplatform
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -16,13 +18,18 @@ import androidx.compose.ui.Modifier
 fun App() {
     var count by remember { mutableStateOf(0) }
 
-    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Button(
-            onClick = {
-                count++
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
+    ) {
+        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Button(
+                onClick = {
+                    count++
+                }
+            ) {
+                Text("Count: $count")
             }
-        ) {
-            Text("Count: $count")
         }
     }
 }
