@@ -28,7 +28,7 @@ kotlin {
     }
 
     val ktorVersion = "2.2.4"
-    val coroutinesVersion = "1.6.4"
+    val coroutinesVersion = "1.7.1"
 
     sourceSets {
         val commonMain by getting {
@@ -37,6 +37,7 @@ kotlin {
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material3)
+                implementation(compose.animation)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
@@ -44,6 +45,9 @@ kotlin {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+
+                implementation("io.insert-koin:koin-core:3.3.3")
+                api("dev.icerock.moko:mvvm-core:0.13.1")
             }
         }
         val commonTest by getting {
@@ -54,6 +58,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-android:$ktorVersion")
+                implementation("io.insert-koin:koin-androidx-compose:3.4.2")
             }
         }
         val iosMain by getting {
